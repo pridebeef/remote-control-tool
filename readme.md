@@ -1,4 +1,4 @@
-# Remote Command Tool
+# Remote Control Tool
 *as mentioned on twitter, and all that.*
 
 ## Overview
@@ -12,7 +12,21 @@ where the command would be something like opening a specific URL in the browser.
 
 The current functionality of the server is to:
 * open URLs, including autoplay and fullscreening them
-* manage other devices, such as the wearable device with a screen I’ve also been working on (link here)
+* manage other devices, such as the [hypnocollar - wearable device with a screen I’ve also been working on](https://github.com/pridebeef/smart-wearable)
+  * The “wearable” is the project mentioned there, which will have more build logs eventually, but should be enough to DIY already!
+
+## Warning / Notice
+
+I tried to make this as secure as possible, reading what I could find on proper practices for TLS, but
+given the nature of the tool, there could definitely be the potential for arbitrary/remote code execution issues.
+**I do not have much experience with many of these protocols and tried my best, but flaws definitely exist.
+Be careful about running this, and if you notice something, let me know!**
+
+## Screenshot
+
+![sitescreenshot](./screenshots/screenshot.png)
+
+- - -
 
 ## The Client
 
@@ -39,10 +53,11 @@ The client requires `python` (anything 3.X should work) and `flask`, which can b
 
 `python client.py` and then opening a browser to `http://127.0.0.1:5000`, the default flask server.
 
-(`http` rather than `https` should be fine for the local web app, 
+Note: (`http` rather than `https` should be fine for the local web app, 
 because the client web app POSTs to localhost, which would not be visible to the network -
 anything going to the network and the server machine is from the webapp’s backend through TLS.) 
 
+- - -
 
 ## The Server
 
@@ -75,3 +90,7 @@ fit your setup. All of these are required, but platform-specific settings will b
     * `driver` - path to selenium chromedriver executable to be used
 * `wearable`:
   * `ip`, `port` - network settings for the smart wearable on the local network
+
+### Usage
+
+`python server.py` and wait for someone with the client to mess with you.
