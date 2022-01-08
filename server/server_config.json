@@ -1,0 +1,23 @@
+{
+	"host": "0.0.0.0",
+	"port": 40001,
+	"password": "testpass",
+	"ssl": {
+		"cert": "ssl/cert.crt",
+		"key": "ssl/key.key"
+	},
+	"paths": {
+		"windows": {
+			"driver": "C:\\Users\\USER\\AppData\\Local\\Chromium\\Application\\chromedriver.exe",
+			"browser": "C:\\Users\\USER\\AppData\\Local\\Chromium\\Application\\chrome.exe"
+		},
+		"linux": {
+			"driver": "/usr/bin/chromedriver",
+			"browser": "/usr/bin/chromium"
+		}
+	},
+	"wearable": {
+		"ip": "192.168.1.14",
+		"port": 3000
+	}
+}

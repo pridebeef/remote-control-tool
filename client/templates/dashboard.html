@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Hello from Flask</title>
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="{{ url_for('static', filename='dashboard.css')}}"
+  />
+  <script src="{{ url_for('static', filename='dashboard.js')}}"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
+  <div class="header">
+    <h1>Remote Command Center</h1>
+  </div>
+  <div class="main-ui" method="post">
+    <div class="panel">
+      <div class="panel-title">
+        <p>Settings</p>
+      </div>
+      <div class="linebreak"></div>
+      <div class="panel-body">
+        <div class="textbox">
+          <label>IP address: <input id="ip" name="ip" /></label>
+        </div>
+        <div class="textbox">
+          <label>Port: <input id="port" name="port" /></label>
+        </div>
+        <div class="textbox">
+          <label>Password: <input id="password" name="password" /></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">
+        <p>Desktop</p>
+      </div>
+      <div class="linebreak"></div>
+      <div class="panel-body">
+        <div class="textbox">
+          <label>URL: <input name="url" id="url" /></label>
+        </div>
+        <label
+          >Autoplay? <input type="checkbox" name="autoplay" id="autoplay"
+        /></label>
+        <label
+          >Fullscreen? <input type="checkbox" name="fullscreen" id="fullscreen"
+        /></label>
+      </div>
+      <button id="desktop-send" onclick="send_open_url()">Send</button>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">
+        <p>Wearable</p>
+      </div>
+      <div class="linebreak"></div>
+      <div class="panel-body">
+        {% for i in wearable_modes %}
+        <label
+          ><input
+            type="radio"
+            value="{{i}}"
+            name="mode"
+          />{{wearable_modes[i]}}</label
+        >
+        {% endfor %}
+      </div>
+      <button id="wearable-send" onclick="send_wearable()">Send</button>
+    </div>
+  </div>
+  <div class="footer"></div>
+</body>

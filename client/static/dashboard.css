@@ -1,0 +1,106 @@
+:root {
+  --shade-4: #e07e5e;
+  --shade-5: #e59276;
+  --shade-3: #da6944;
+}
+
+div {
+  border-radius: 6px;
+}
+
+body {
+  background-color: var(--shade-5);
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+}
+
+.header {
+  background-color: var(--shade-3);
+  width: 400px;
+  display: flex;
+  margin: 2rem auto 2rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+.header > h1 {
+  font-size: 2em;
+  font-weight: bold;
+  color: #fff;
+  margin: auto;
+  text-align: center;
+}
+
+.main-ui {
+  display: inline-flex;
+  align-items: stretch;
+  margin-top: 1rem;
+  flex-direction: column;
+  width: auto;
+}
+
+.panel {
+  background-color: var(--shade-4);
+  display: flex;
+  flex-direction: column;
+  margin: auto auto 2rem;
+  padding: 1em;
+  width: 400px;
+}
+
+.panel-title > p {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #fff;
+  margin: auto;
+  text-align: center;
+}
+
+.panel-body {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: auto;
+}
+
+.panel-body > * {
+  margin-bottom: 1em;
+}
+
+.panel > button {
+  width: 80%;
+  margin: auto;
+}
+
+.textbox > * {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: auto;
+  width: 100%;
+}
+
+.textbox > * {
+  margin: auto;
+}
+
+label {
+  color: #fff;
+  font-weight: bold;
+}
+
+.linebreak {
+  background-color: white;
+  height: 1px;
+  width: 80%;
+  margin: 1.3rem auto 1.3rem;
+}
+
+@media (max-width: 860px) {
+  .main-ui {
+    flex-direction: column;
+  }
+}
