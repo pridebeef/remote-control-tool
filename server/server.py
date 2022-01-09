@@ -1,4 +1,7 @@
 from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
 from threading import Thread, Event
 import json, os, signal, socket, socketserver, struct, ssl, sys, time
 
@@ -18,16 +21,32 @@ def webdrive(paths, url, options):
     # site specific settings flags - after loading site
     if "autoplay" in options:
         if url.startswith("https://hypno.n"):
-            driver.find_element_by_xpath("/html/body/div[3]/div/a[1]").click()
+            try:
+                element = WebDriverWait(driver, 10).until(
+                    EC.presence_of_element_located((By.CSS_SELECTOR, "#intro-start"))
+                )
+                element.click()
+            except:
+                pass
         if url.startswith("https://myn"):
-            time.sleep(3)
-            driver.find_element_by_xpath("/html/body/div[6]/div[2]/img").click()
+            try:
+                # can't find the right thing to block on for loading
+                # no element is added and i can't tell what changes
+                time.sleep(3)
+                element = WebDriverWait(driver, 10).until(
+                    EC.presence_of_element_located((By.CSS_SELECTOR, "body>div.player>div.contextPlay>img"))
+                )
+                element.click()
+            except:
+                pass
         if url.startswith("https://www.youtu"):
-            print("x")
-            time.sleep(3)
-            driver.find_element_by_xpath(
-                "/html/body/ytd-app/div/ytd-page-manager/ytd-watch-flexy/div[5]/div[1]/div/div[1]/div/div/div/ytd-player/div/div/div[4]/button"
-            ).click()
+            try:
+                element = WebDriverWait(driver, 10).until(
+                    EC.presence_of_element_located((By.CSS_SELECTOR, "#movie_player>div.ytp-cued-thumbnail-overlay>button"))
+                )
+                element.click()
+            except:
+                pass
 
     # run indefinitely until closed
     while 1:
